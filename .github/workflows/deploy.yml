@@ -22,4 +22,4 @@ jobs:
       - name: Deploy to k8s cluster
         env:
           KUBECONF_DATA: ${{ secrets.KUBECONF_DATA }}
-        run: ./kubectl --kubeconfig <(echo "$KUBECONF_DATA" | base64 -d) get deployments
+        run: ./kubectl --kubeconfig <(echo "$KUBECONF_DATA" | base64 -d) apply -k kustomization.yaml
